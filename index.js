@@ -386,7 +386,17 @@
     return null;
   }
 
-  // Display the initial scene.
-  switchScene(scenes[0]);
+// Display the initial scene based on URL hash (e.g., #3-4)
+var hashSceneId = window.location.hash.substring(1);
+var initialScene = scenes.find(function(s) {
+  return s.data.id === hashSceneId;
+});
+
+if (initialScene) {
+  switchScene(initialScene);
+} else {
+  switchScene(scenes[0]); // default to first scene
+}
+
 
 })();
